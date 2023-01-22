@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
 dotenv.config();
-mongoose.set('strictQuery', false);
 
 // set up server
 
@@ -19,7 +18,14 @@ app.get('/test', (req, res) => {
 
 // connect to mongoDB
 
-mongoose.connect(process.env.MDB_CONNECT, (error) => {
-  if (error) return console.error(error);
-  console.log('Connected to MongoDB');
-});
+mongoose.connect(
+  process.env.MDB_CONNECT,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  (error) => {
+    if (error) return console.error(error);
+    console.log('Connected to MongoDB');
+  }
+);
