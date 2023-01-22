@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
 dotenv.config();
-mongoose.set('strictQuery', false);
 
 // set up server
 
