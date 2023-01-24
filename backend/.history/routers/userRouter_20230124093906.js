@@ -45,11 +45,12 @@ router.post('/', async (req, res) => {
       email,
       passwordHash,
     });
-    const saveUser = await newUser.save();
 
     // log the user in
 
     const token = jwt.sign({ user: saveUser._id }, process.env.JWT_SECRET);
+
+    const saveUser = await newUser.save();
   } catch (err) {
     console.log(err);
     res.status(500).send();

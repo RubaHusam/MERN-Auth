@@ -50,6 +50,7 @@ router.post('/', async (req, res) => {
     // log the user in
 
     const token = jwt.sign({ user: saveUser._id }, process.env.JWT_SECRET);
+    console.log(token);
   } catch (err) {
     console.log(err);
     res.status(500).send();
