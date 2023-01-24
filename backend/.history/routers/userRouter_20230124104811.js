@@ -77,47 +77,10 @@ router.post('/login', async (req, res) => {
         .status(400)
         .json({ errorMessage: 'Please enter all required fields.' });
     }
-
-    const existingUser = await User.findOne({ email });
-
-    if (!existingUser) {
-      return res.status(401).json({ errorMessage: 'Wrong email or password' });
-    }
-
-    const passwordCorrect = await bcrypt.compare(
-      password,
-      existingUser.passwordHash
-    );
-
-    if (!passwordCorrect) {
-      return res.status(401).json({ errorMessage: 'Wrong email or password' });
-    }
-
-    // sign the token
-
-    const token = jwt.sign({ user: existingUser._id }, process.env.JWT_SECRET);
-
-    // send the token in HTTP-only cookie
-
-    res
-      .cookie('token', token, {
-        httpOnly: true,
-      })
-      .send();
   } catch (err) {
     console.log(err);
     res.status(500).send();
   }
-});
-
-// log out
-router.get('/logout', async (req, res) => {
-  res
-    .cookie('token', '', {
-      httpOnly: true,
-      expires: new Date(0),
-    })
-    .send();
 });
 
 module.exports = router;

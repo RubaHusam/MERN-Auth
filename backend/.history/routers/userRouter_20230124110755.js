@@ -111,13 +111,11 @@ router.post('/login', async (req, res) => {
 });
 
 // log out
-router.get('/logout', async (req, res) => {
-  res
-    .cookie('token', '', {
-      httpOnly: true,
-      expires: new Date(0),
-    })
-    .send();
+router.git('/logout', async (req, res) => {
+  res.cookie('token', '', {
+    httpOnly: true,
+    expires: new Date(0),
+  });
 });
 
 module.exports = router;
