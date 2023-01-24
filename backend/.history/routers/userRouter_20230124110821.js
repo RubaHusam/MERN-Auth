@@ -111,7 +111,7 @@ router.post('/login', async (req, res) => {
 });
 
 // log out
-router.get('/logout', async (req, res) => {
+router.git('/logout', async (req, res) => {
   res
     .cookie('token', '', {
       httpOnly: true,
