@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const User = require('../models/userModel');
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 
 router.post('/', async (req, res) => {
   try {
@@ -46,18 +45,6 @@ router.post('/', async (req, res) => {
       passwordHash,
     });
     const saveUser = await newUser.save();
-
-    // sign the token
-
-    const token = jwt.sign({ user: saveUser._id }, process.env.JWT_SECRET);
-
-    // send the token in HTTP-only cookie
-
-    res
-      .cookie('token', token, {
-        httpOnly: true,
-      })
-      .send();
   } catch (err) {
     console.log(err);
     res.status(500).send();
