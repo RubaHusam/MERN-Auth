@@ -38,13 +38,7 @@ router.post('/', async (req, res) => {
     const salt = await bcrypt.genSalt();
     const passwordHash = await bcrypt.hash(password, salt);
 
-    // save a new user account to the db
-
-    const newUser = new User({
-      email,
-      passwordHash,
-    });
-    const saveUser = await newUser.save();
+    console.log(passwordHash);
   } catch (err) {
     console.log(err);
     res.status(500).send();
