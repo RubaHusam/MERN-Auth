@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const User = require('../models/userModel');
-const bcrypt = require('bcryptjs');
 
 router.post('/', async (req, res) => {
   try {
@@ -32,13 +31,6 @@ router.post('/', async (req, res) => {
         .status(400)
         .json({ errorMessage: 'An account with this email already exists.' });
     }
-
-    // hash the password
-
-    const salt = await bcrypt.genSalt();
-    const passwordHash = await bcrypt.hash(password, salt);
-
-    console.log(passwordHash);
   } catch (err) {
     console.log(err);
     res.status(500).send();

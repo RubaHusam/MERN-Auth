@@ -37,8 +37,6 @@ router.post('/', async (req, res) => {
 
     const salt = await bcrypt.genSalt();
     const passwordHash = await bcrypt.hash(password, salt);
-
-    console.log(passwordHash);
   } catch (err) {
     console.log(err);
     res.status(500).send();
