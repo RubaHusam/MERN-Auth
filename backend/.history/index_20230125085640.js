@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port: ${PORT} 😊`));
 
 app.use(express.json()); //apply this function for any request
-app.use(cookieParser());
+app.use();
 
 // app.get('/test', (req, res) => {
 //   res.send('It work');

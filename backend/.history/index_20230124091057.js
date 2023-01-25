@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const cookieParser = require('cookie-parser');
 
 dotenv.config();
 mongoose.set('strictQuery', false);
@@ -15,7 +14,6 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server started on port: ${PORT} 😊`));
 
 app.use(express.json()); //apply this function for any request
-app.use(cookieParser());
 
 // app.get('/test', (req, res) => {
 //   res.send('It work');
@@ -31,4 +29,3 @@ mongoose.connect(process.env.MDB_CONNECT, (error) => {
 //  set up routes
 
 app.use('/auth', require('./routers/userRouter'));
-app.use('/customer', require('./routers/customerRouter'));
