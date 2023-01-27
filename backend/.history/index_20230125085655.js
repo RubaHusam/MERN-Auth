@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser');
-const cors = require('cors');
 
 dotenv.config();
 mongoose.set('strictQuery', false);
@@ -17,11 +16,6 @@ app.listen(PORT, () => console.log(`Server started on port: ${PORT} 😊`));
 
 app.use(express.json()); //apply this function for any request
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: ['http://localhost:3000'],
-  })
-);
 
 // app.get('/test', (req, res) => {
 //   res.send('It work');
