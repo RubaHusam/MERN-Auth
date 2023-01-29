@@ -27,7 +27,7 @@ export default function Header() {
               <Nav.Link as={Link} to='/' style={{ textDecoration: 'none' }}>
                 Home
               </Nav.Link>
-              {loggedIn === false && (
+              {loggedIn === false ? (
                 <>
                   <Nav.Link
                     as={Link}
@@ -42,6 +42,8 @@ export default function Header() {
                     Login
                   </Nav.Link>
                 </>
+              ) : (
+                <>hiii</>
               )}
               {loggedIn === true && (
                 <>

@@ -27,7 +27,7 @@ export default function Header() {
               <Nav.Link as={Link} to='/' style={{ textDecoration: 'none' }}>
                 Home
               </Nav.Link>
-              {loggedIn === false && (
+              {(loggedIn === false || loggedIn === 'undefined') && (
                 <>
                   <Nav.Link
                     as={Link}

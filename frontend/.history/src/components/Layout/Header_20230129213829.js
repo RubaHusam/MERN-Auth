@@ -5,7 +5,7 @@ import AuthContext from '../context/AuthContext';
 import LogoutBtn from '../Auth/LogoutBtn';
 
 export default function Header() {
-  const { loggedIn } = useContext(AuthContext);
+  const loggedIn = useContext(AuthContext);
 
   return (
     <>
@@ -27,7 +27,7 @@ export default function Header() {
               <Nav.Link as={Link} to='/' style={{ textDecoration: 'none' }}>
                 Home
               </Nav.Link>
-              {loggedIn === false && (
+              {loggedIn === false ? (
                 <>
                   <Nav.Link
                     as={Link}
@@ -42,6 +42,8 @@ export default function Header() {
                     Login
                   </Nav.Link>
                 </>
+              ) : (
+                { loggedIn }
               )}
               {loggedIn === true && (
                 <>

@@ -1,17 +1,13 @@
 import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { Form, Row, Col, Button } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
-
 import AuthContext from '../context/AuthContext';
 
-export default function Register() {
+export default function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const [passwordVerify, setPasswordVerify] = useState();
 
   const { getLoggedIn } = useContext(AuthContext);
-  const navigate = useNavigate();
 
   // Validate
   const [validated, setValidated] = useState(false);
@@ -23,23 +19,21 @@ export default function Register() {
     if (form.checkValidity() === false) {
       event.stopPropagation();
     } else {
-      register();
+      login();
     }
 
     setValidated(true);
   };
 
-  async function register() {
+  async function login() {
     try {
-      const registerData = {
+      const loginData = {
         email,
         password,
-        passwordVerify,
       };
 
-      await axios.post('http://localhost:5000/auth', registerData);
-      await getLoggedIn();
-      navigate('/');
+      await axios.post('http://localhost:5000/auth/login', loginData);
+      getLoggedIn();
     } catch (error) {
       console.error(error);
     }
@@ -91,21 +85,6 @@ export default function Register() {
           </Col>
         </Form.Group>
 
-        {/* Password */}
-        <Form.Group as={Row} className='mb-3' controlId='formPlaintextPassword'>
-          <Form.Label column lg='4' sm='2'>
-            Verify your password
-          </Form.Label>
-          <Col lg='8' sm='10'>
-            <Form.Control
-              type='password'
-              placeholder='Verify your Password'
-              onChange={(e) => setPasswordVerify(e.target.value)}
-              value={passwordVerify}
-              required
-            />
-          </Col>
-        </Form.Group>
         <Row
           style={{
             width: '100%',
