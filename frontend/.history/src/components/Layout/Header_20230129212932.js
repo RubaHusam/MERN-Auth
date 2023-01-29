@@ -5,7 +5,7 @@ import AuthContext from '../context/AuthContext';
 import LogoutBtn from '../Auth/LogoutBtn';
 
 export default function Header() {
-  const { loggedIn } = useContext(AuthContext);
+  const loggedIn = useContext(AuthContext);
 
   return (
     <>

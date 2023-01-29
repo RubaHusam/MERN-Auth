@@ -1,9 +1,8 @@
 import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { Form, Row, Col, Button } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
-
 import AuthContext from '../context/AuthContext';
+
 
 export default function Register() {
   const [email, setEmail] = useState();
@@ -11,7 +10,7 @@ export default function Register() {
   const [passwordVerify, setPasswordVerify] = useState();
 
   const { getLoggedIn } = useContext(AuthContext);
-  const navigate = useNavigate();
+
 
   // Validate
   const [validated, setValidated] = useState(false);
@@ -38,8 +37,7 @@ export default function Register() {
       };
 
       await axios.post('http://localhost:5000/auth', registerData);
-      await getLoggedIn();
-      navigate('/');
+      getLoggedIn();
     } catch (error) {
       console.error(error);
     }

@@ -121,18 +121,20 @@ router.get('/logout', async (req, res) => {
 });
 
 // logged in
-router.get('/loggedIn', async (req, res) => {
+router.get('/logout', async (req, res) => {
   try {
     const token = req.cookies.token;
     if (!token) {
-      return res.json(false);
+      return res.status(401).json({ errorMassage: 'Unauthorized' });
     }
 
-    jwt.verify(token, process.env.JWT_SECRET);
+    const verified = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = verified.user;
 
-    res.send(true);
+    next();
   } catch (err) {
-    res.json(false);
+    console.log(err);
+    res.status(401).json({ errorMassage: 'Unauthorized' });
   }
 });
 
