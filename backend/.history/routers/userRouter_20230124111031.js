@@ -120,22 +120,4 @@ router.get('/logout', async (req, res) => {
     .send();
 });
 
-// logged in
-router.get('/loggedIn', async (req, res) => {
-  try {
-    const token = req.cookies.token;
-    if (!token) {
-      return res.json(false);
-    }
-
-    jwt.verify(token, process.env.JWT_SECRET);
-   
-    res.send(true);
-
-    next();
-  } catch (err) {
-    res.json(false);
-  }
-});
-
 module.exports = router;
