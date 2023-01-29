@@ -26,22 +26,20 @@ export default function Header() {
               <Nav.Link as={Link} to='/' style={{ textDecoration: 'none' }}>
                 Home
               </Nav.Link>
-              {!loggedIn ? (
-                <>
-                  <Nav.Link
-                    as={Link}
-                    to='/register'
-                    style={{ textDecoration: 'none' }}>
-                    Register
-                  </Nav.Link>
-                  <Nav.Link
-                    as={Link}
-                    to='/login'
-                    style={{ textDecoration: 'none' }}>
-                    Login
-                  </Nav.Link>
-                </>
-              ) : (
+              <Nav.Link
+                as={Link}
+                to='/register'
+                style={{ textDecoration: 'none' }}>
+                Register
+              </Nav.Link>
+              <Nav.Link
+                as={Link}
+                to='/login'
+                style={{ textDecoration: 'none' }}>
+                Login
+              </Nav.Link>
+
+              {loggedIn && (
                 <Nav.Link
                   as={Link}
                   to='/customer'
