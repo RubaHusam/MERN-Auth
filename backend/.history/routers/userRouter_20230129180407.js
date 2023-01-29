@@ -129,8 +129,10 @@ router.get('/loggedIn', async (req, res) => {
     }
 
     jwt.verify(token, process.env.JWT_SECRET);
-
+   
     res.send(true);
+
+    next();
   } catch (err) {
     res.json(false);
   }
