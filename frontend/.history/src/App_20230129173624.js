@@ -5,13 +5,12 @@ import axios from 'axios';
 import Header from './components/Layout/Header';
 import Register from './components/Auth/Register';
 import Login from './components/Auth/Login';
-import { AuthContextProvider } from './components/context/AuthContext';
 
 axios.defaults.withCredentials = true; //to allow save cookie
 
 function App() {
   return (
-    <AuthContextProvider>
+    <>
       <Router>
         <Header />
         <Routes>
@@ -21,7 +20,7 @@ function App() {
           <Route path='/customer' element={<div>Customer</div>}></Route>
         </Routes>
       </Router>
-    </AuthContextProvider>
+    </>
   );
 }
 

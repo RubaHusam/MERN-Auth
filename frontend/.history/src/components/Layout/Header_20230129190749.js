@@ -1,5 +1,5 @@
 import React from 'react';
-import { Nav, Navbar, Container } from 'react-bootstrap';
+import { Nav, Navbar, Container, NavLink } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 export default function Header() {
@@ -7,10 +7,9 @@ export default function Header() {
     <>
       <Navbar collapseOnSelect expand='lg'>
         <Container>
-          <Navbar.Brand as={Link} to='/'>
-            MERN Authentication
-          </Navbar.Brand>
-
+          <Link to='/' style={{ textDecoration: 'none' }}>
+            <Navbar.Brand href='/'>MERN Authentication</Navbar.Brand>
+          </Link>
           <Navbar.Toggle aria-controls='responsive-navbar-nav' />
           <Navbar.Collapse id='responsive-navbar-nav'>
             <Nav
