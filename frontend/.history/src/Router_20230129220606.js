@@ -6,7 +6,6 @@ import Register from './components/Auth/Register';
 import Login from './components/Auth/Login';
 
 import AuthContext from './components/context/AuthContext';
-import Customers from './components/Customers/Customers';
 
 export default function Routers() {
   const { loggedIn } = useContext(AuthContext);
@@ -23,7 +22,7 @@ export default function Routers() {
           </>
         )}
         {loggedIn === true && (
-          <Route path='/customer' element={<Customers />}></Route>
+          <Route path='/customer' element={<div>Customer</div>}></Route>
         )}
       </Routes>
     </Router>
