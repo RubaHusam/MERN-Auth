@@ -8,7 +8,7 @@ function AuthContextProvider(props) {
 
   async function getLoggedIn() {
     const loggedInRes = await axios.get(
-      'mern-auth-22xcsklwf-rubahusam.vercel.app/auth/loggedIn'
+      'https://mern-auth-azure.vercel.app/auth/loggedIn'
     );
     setLoggedIn(loggedInRes.data);
   }
