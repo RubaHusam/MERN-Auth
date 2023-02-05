@@ -5,9 +5,10 @@ import { useNavigate } from 'react-router-dom';
 
 import AuthContext from '../context/AuthContext';
 
-export default function Login() {
+export default function Register() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [passwordVerify, setPasswordVerify] = useState();
 
   const { getLoggedIn } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -22,22 +23,23 @@ export default function Login() {
     if (form.checkValidity() === false) {
       event.stopPropagation();
     } else {
-      login();
+      register();
     }
 
     setValidated(true);
   };
 
-  async function login() {
+  async function register() {
     try {
-      const loginData = {
+      const registerData = {
         email,
         password,
+        passwordVerify,
       };
 
       await axios.post(
-        'https://mern-auth-azure.vercel.app/auth/login',
-        loginData
+        'mern-auth-22xcsklwf-rubahusam.vercel.app/auth',
+        registerData
       );
       await getLoggedIn();
       navigate('/');
@@ -92,6 +94,21 @@ export default function Login() {
           </Col>
         </Form.Group>
 
+        {/* Password */}
+        <Form.Group as={Row} className='mb-3' controlId='formPlaintextPassword'>
+          <Form.Label column lg='4' sm='2'>
+            Verify your password
+          </Form.Label>
+          <Col lg='8' sm='10'>
+            <Form.Control
+              type='password'
+              placeholder='Verify your Password'
+              onChange={(e) => setPasswordVerify(e.target.value)}
+              value={passwordVerify}
+              required
+            />
+          </Col>
+        </Form.Group>
         <Row
           style={{
             width: '100%',

@@ -28,7 +28,7 @@ export default function CustomersForm({ getCustomers }) {
       };
 
       await axios.post(
-        'https://mern-auth-azure.vercel.app/customer',
+        'mern-auth-22xcsklwf-rubahusam.vercel.app/customer',
         CustomerData
       );
       getCustomers();
