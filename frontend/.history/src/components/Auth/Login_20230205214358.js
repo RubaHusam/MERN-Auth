@@ -36,7 +36,7 @@ export default function Login() {
       };
 
       await axios.post(
-        'mern-auth-22xcsklwf-rubahusam.vercel.app/auth/login',
+        'https://mern-auth-azure.vercel.app/auth/login',
         loginData
       );
       await getLoggedIn();

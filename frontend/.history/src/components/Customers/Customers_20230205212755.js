@@ -9,7 +9,7 @@ export default function Customers() {
 
   async function getCustomers() {
     const customersRes = await axios.get(
-      'mern-auth-22xcsklwf-rubahusam.vercel.app/customer'
+      'https://mern-auth-azure.vercel.app/customer'
     );
     setCustomers(customersRes.data);
   }
