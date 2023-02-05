@@ -37,7 +37,7 @@ export default function Register() {
         passwordVerify,
       };
 
-      await axios.post('http://localhost:5000/auth', registerData);
+      await axios.post('https://mern-auth-azure.vercel.app/auth', registerData);
       await getLoggedIn();
       navigate('/');
     } catch (error) {

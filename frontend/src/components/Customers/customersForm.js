@@ -27,7 +27,10 @@ export default function CustomersForm({ getCustomers }) {
         name: customerName,
       };
 
-      await axios.post('http://localhost:5000/customer', CustomerData);
+      await axios.post(
+        'https://mern-auth-azure.vercel.app/customer',
+        CustomerData
+      );
       getCustomers();
     } catch (error) {
       console.error(error);

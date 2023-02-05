@@ -10,7 +10,7 @@ export default function LogoutBtn() {
   const navigate = useNavigate();
 
   async function logout() {
-    await axios.get('http://localhost:5000/auth/logout');
+    await axios.get('https://mern-auth-azure.vercel.app/auth/logout');
     await getLoggedIn();
     navigate('/');
   }

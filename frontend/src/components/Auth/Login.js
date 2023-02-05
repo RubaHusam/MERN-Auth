@@ -35,7 +35,10 @@ export default function Login() {
         password,
       };
 
-      await axios.post('http://localhost:5000/auth/login', loginData);
+      await axios.post(
+        'https://mern-auth-azure.vercel.app/auth/login',
+        loginData
+      );
       await getLoggedIn();
       navigate('/');
     } catch (error) {
